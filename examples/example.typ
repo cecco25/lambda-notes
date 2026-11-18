@@ -21,19 +21,23 @@ top of the page, the tables, the code blocks, and the algorithm figures.
 Links come in two colors. External links like
 #link("https://typst.app")[the Typst website] use the theme color, while internal
 links like #link(<components>)[the components chapter] or
-#link(<sorting>)[the sorting chapter] are shown in green, so you can tell
+#link(<sorting>)[the sorting chapter] are shown in a darker shade of the theme color, so you can tell
 navigation apart from the outside world at a glance. Plain references such as
 @sorting work too.
 
 == Headings
 
 Level-1 headings open a new chapter on a fresh page, with a small tracked
-"Chapter N" label, a large title, and a rule. Level-2 and level-3 headings are
-numbered and tinted with the theme color.
+"Chapter N" label, a large title, and a rule. Level-2, level-3 and level-4 headings are
+numbered, sized on a notes scale (17, 13.5 and 11.5pt) and tinted with the theme color.
 
 === A third-level heading
 
 Deeper headings keep the same numbering scheme, e.g. `1.1.1`.
+
+==== A fourth-level heading
+
+The smallest heading is italic and only slightly larger than the body text.
 
 == Running header
 
@@ -108,11 +112,39 @@ and the first column is left-aligned while the others are centered.
 @complexity summarizes the trade-offs; figures are numbered and can be
 referenced like any other label.
 
+== Figures
+
+Captions follow the LaTeX style and are numbered per chapter, so the next
+figure in this chapter is Figure 2.N, and the count restarts in chapter 3.
+
+#figure(
+  rect(width: 60%, height: 3em, fill: luma(240), stroke: 0.5pt + luma(150))[
+    #align(center + horizon)[A placeholder figure]
+  ],
+  kind: image,
+  caption: [Image captions go below the figure.],
+) <placeholder>
+
+@placeholder is referenced like any other label.
+
+== Lists
+
+Items written without blank lines are still spaced:
+- first item
+- second item
+  - nested item
+  - another nested item
+- third item
+
++ first step
++ second step
++ third step
+
 == Code
 
-Inline code such as `let x = 42` gets a small highlighted box. Code blocks are
-rendered with #link("https://typst.app/universe/package/codly")[codly], with a
-language icon for each snippet.
+Inline code such as `let x = 42` is plain monospace, as in LaTeX. Code blocks
+are set in the same monospace font and keep syntax highlighting when a
+language is given.
 
 ```python
 def fibonacci(n: int) -> int:
